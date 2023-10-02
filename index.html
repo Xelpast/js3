@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function result() 
+        {
+            debugger;
+            var ip = document.forms["forms"].elements["ip"].value;
+            var regexp6 = /([0-9a-fA-F]{1,4}\:){7}[0-9a-fA-F]{1,4}/g;
+            var regexp4 = /(((\b([1-9]?\d)\b|\b((1\d\d)|(2[0-4]\d)|(25[0-5]))\b)){1,3}\.){3}((\b([1-9]?\d)\b|\b((1\d\d)|(2[0-4]\d)|(25[0-5]))\b)){1,3}/g;
+            if(regexp4.test(ip)) 
+            {
+                document.write("Ваш ip v4: " + ip.match(regexp4) + "<br><b>" + "Если вы ввели больше допустимых для ip-адреса чисел, они сократятся и выведется корректный ip или несколько ip");
+            }
+            else if(regexp6.test(ip))
+            {
+                document.write("Ваш ip v6: " + ip.match(regexp6) + "<br><b>" + "Если вы ввели больше допустимых для ip-адреса чисел, они сократятся и выведется корректный ip или несколько ip");
+            }
+            else 
+            {
+                document.write("Введите корректный ip")
+            }
+        }
+    </script>
+</head>
+<body>
+    <form id = "forms">
+        <label for="">Введите строку с ip-адресом: </label>
+        <input type="text" id = "ip"><br><br>
+        <button onclick = "result() " value="Отправить">Нажмите для получения информации об ip</button>
+    </form>
+</body>
+</html>
